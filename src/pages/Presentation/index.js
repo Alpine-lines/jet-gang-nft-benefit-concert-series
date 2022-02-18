@@ -20,7 +20,7 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 PRO React components
 import MKBox from "components/MKBox";
-import MKBadge from "components/MKBadge";
+// import MKBadge from "components/MKBadge";
 import MKTypography from "components/MKTypography";
 // import MKSocialButton from "components/MKSocialButton";
 
@@ -35,11 +35,14 @@ import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/gold-stardoor.jpg";
-import gb from "assets/images/GB no background.png";
+// import gb from "assets/images/GB no background.png";
+// import hl from "assets/images/howl-logo.jpeg";
 import CtaOne from "components/CtaOne";
 import LogoAreaThree from "components/LogoAreaThree";
 import StatsThree from "components/StatsThree";
 import TeamTwo from "components/TeamTwo";
+
+import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 
 function Presentation() {
   return (
@@ -66,45 +69,43 @@ function Presentation() {
         }}
       >
         <Container>
-          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
-            <MKTypography
-              variant="h1"
-              color="white"
-              mt={-6}
-              mb={1}
-              sx={({ breakpoints, typography: { size } }) => ({
-                [breakpoints.down("md")]: {
-                  fontSize: size["3xl"],
-                },
-              })}
-            >
-              Zodiac Haus{" "}
-              <MKBadge
-                badgeContent="pro"
-                size="lg"
-                variant="contained"
+          <Grid
+            container
+            item
+            xs={12}
+            lg={7}
+            direction="column"
+            alignContent="center"
+            justifyContent="center"
+            mx="auto"
+          >
+            <Grid item sx={{ mb: "2.25em", mx: "auto" }}>
+              <AirplaneTicketIcon fontSize="large" color="info" />
+            </Grid>
+            <Grid item sx={{ mx: "auto" }}>
+              <MKTypography
+                variant="h1"
                 color="white"
-                container
-                sx={{ mt: -4 }}
-              />
-            </MKTypography>
-            <MKTypography variant="body1" color="white" textAlign="center" px={6} mt={1}>
-              Sunday February 20th, 2022 | Denver, CO
-            </MKTypography>
-            {/* <Grid container xs={12} lg={5} spacing={2} justifyContent="center" mx="auto"> */}
-            {/* <Grid item> */}
-            <MKBox>
-              <img src={gb} alt="Giani Blu" height="150px" />
-              <img src={gb} alt="Giani Blu" height="150px" />
-              <img src={gb} alt="Giani Blu" height="150px" />
-              <img src={gb} alt="Giani Blu" height="150px" />
-            </MKBox>
-            {/* </Grid> */}
-            {/* </Grid> */}
+                mt={-6}
+                mb={1}
+                sx={({ breakpoints, typography: { size } }) => ({
+                  [breakpoints.down("md")]: {
+                    fontSize: size["3xl"],
+                  },
+                })}
+              >
+                Jet Gang NFT Benefit{" "}
+              </MKTypography>
+            </Grid>
+            <Grid item sx={{ mx: "auto" }}>
+              <MKTypography variant="body1" color="white" textAlign="center" px={6} mt={1}>
+                Sunday February 20th, 2022 | Zodiac Haus | Denver, CO
+              </MKTypography>
+            </Grid>
           </Grid>
         </Container>
       </MKBox>
-      {/* <Card
+      <Card
         sx={{
           p: 2,
           mx: { xs: 2, lg: 3 },
@@ -114,38 +115,38 @@ function Presentation() {
           backdropFilter: "saturate(200%) blur(30px)",
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
-      > */}
-      <Container>
-        <MKBox
-          sx={{
-            margin: "5em 0",
-          }}
-        >
-          <TeamTwo />
-        </MKBox>
-        <MKBox
-          sx={{
-            margin: "0 0 0 0",
-          }}
-        >
-          <StatsThree />
-        </MKBox>
-        <MKBox
-          sx={{
-            margin: "0em 0 7.5em 0",
-          }}
-        >
-          <LogoAreaThree />
-        </MKBox>
-        <MKBox
-          sx={{
-            margin: "5em 0",
-          }}
-        >
-          <CtaOne />
-        </MKBox>
-      </Container>
-      {/* </Card> */}
+      >
+        <Container>
+          <MKBox
+            sx={{
+              margin: "5em 0",
+            }}
+          >
+            <TeamTwo />
+          </MKBox>
+          <MKBox
+            sx={{
+              margin: "0 0 0 0",
+            }}
+          >
+            <StatsThree />
+          </MKBox>
+          <MKBox
+            sx={{
+              margin: "0em 0 7.5em 0",
+            }}
+          >
+            <LogoAreaThree />
+          </MKBox>
+          <MKBox
+            sx={{
+              margin: "5em 0",
+            }}
+          >
+            <CtaOne />
+          </MKBox>
+        </Container>
+      </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>

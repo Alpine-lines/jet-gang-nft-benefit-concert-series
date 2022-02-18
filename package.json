@@ -1,17 +1,17 @@
 {
-  "name": "material-kit-2-pro-react",
+  "name": "jet-gang-benefit",
   "version": "2.0.0",
   "private": true,
-  "author": "Creative Tim",
+  "author": "Alpine Lines",
   "license": "See license in https://www.creative-tim.com/license",
-  "description": "React version of Material Kit 2 PRO by Creative Tim",
-  "homepage": "https://demos.creative-tim.com/material-kit-pro-react/#/",
+  "description": "Jet Gang NFT Benefit Concert Series",
+  "homepage": "http://jet-gang-nft-benefit-concert-series.netlify.com/",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/ct-material-kit-pro-react/issues"
+    "url": "https://github.com/Alpine-lines/jet-gang-nft-benefit-concert-series/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/ct-material-kit-pro-react.git"
+    "url": "git+https://github.com/Alpine-lines/jet-gang-nft-benefit-concert-series.git"
   },
   "engines": {
     "node": "14 || 15 || 16",
@@ -38,6 +38,7 @@
     "react-dom": "17.0.2",
     "react-flatpickr": "3.10.7",
     "react-router-dom": "6.0.2",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "4.0.3",
     "react-syntax-highlighter": "15.4.5",
     "rellax": "1.12.1",

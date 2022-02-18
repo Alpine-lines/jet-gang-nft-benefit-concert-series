@@ -40,7 +40,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Web3-Context
 import { useWeb3 } from "@chainsafe/web3-context";
 import Web3 from "web3";
-import abi from "abi";
+import abi from "../../../abi";
 
 // Images
 // import gb from "assets/images/GB no background.png";
@@ -50,23 +50,18 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const [contract, setContract] = useState({});
-  const { onboard, provider } = useWeb3();
+  const [web3, setWeb3] = useState({});
+  const { address, wallet, onboard, provider } = useWeb3();
 
+  // provider
   useEffect(() => {
-    const web3 = new Web3(provider, provider);
-    // web3.eth.getAccounts((err, accounts) => {
-    //   [web3.eth.defaultAccount] = accounts;
-    // });
-    const ctr = new web3.eth.Contract(abi, process.env.REACT_APP_CONTRACT_ADDRESS);
-    console.log({ ctr });
-    setContract(ctr);
-  }, []);
-
-  // useEffect(() => {
-  //   if (typeof wallet.provider !== "undefined") {
-  //     console.log({ msg: "it has been provided.", contract, wallet });
-  //   }
-  // }, [wallet.provider]);
+    if (provider) {
+      const w3 = new Web3(provider.provider);
+      setWeb3(w3);
+      const ctr = new w3.eth.Contract(abi, process.env.REACT_APP_CONTRACT_ADDRESS);
+      setContract(ctr);
+    }
+  }, [provider]);
 
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
@@ -145,17 +140,32 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
           >
             {renderNavbarItems}
           </MKBox>
-          {/* color={action.color ? action.color : "info"} */}
           <MKBox ml={{ xs: "auto", lg: 0 }}>
-            <MKButton
-              onClick={() => {
-                onboard.walletCheck();
-                // contract.methods.buyTicket(0).send({ from: address });
-                console.log({ contract });
-              }}
-            >
-              Buy Now
-            </MKButton>
+            {!wallet?.provider && (
+              <MKButton
+                variant="gradient"
+                color="warning"
+                onClick={() => {
+                  onboard.walletCheck();
+                }}
+              >
+                Connect To RSVP
+              </MKButton>
+            )}
+            {wallet?.provider && (
+              <MKButton
+                variant="gradient"
+                color="warning"
+                onClick={() => {
+                  contract.methods.buyTicket(0).send({
+                    value: web3.utils.toWei("0.0015"),
+                    from: address,
+                  });
+                }}
+              >
+                Mint GA Tickets
+              </MKButton>
+            )}
           </MKBox>
         </MKBox>
         <MKBox
@@ -176,7 +186,6 @@ DefaultNavbar.defaultProps = {
   brand: "Jet Gang NFT Benefit Concert Series",
   transparent: false,
   light: false,
-  // action: false,
   sticky: false,
   relative: false,
   center: false,
@@ -188,26 +197,6 @@ DefaultNavbar.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
   transparent: PropTypes.bool,
   light: PropTypes.bool,
-  // action: PropTypes.oneOfType([
-  //   PropTypes.bool,
-  //   PropTypes.shape({
-  //     type: PropTypes.oneOf(["external", "internal"]).isRequired,
-  //     route: PropTypes.string.isRequired,
-  //     color: PropTypes.oneOf([
-  //       "primary",
-  //       "secondary",
-  //       "info",
-  //       "success",
-  //       "warning",
-  //       "error",
-  //       "dark",
-  //       "light",
-  //       "default",
-  //       "white",
-  //     ]),
-  //     label: PropTypes.string.isRequired,
-  //   }),
-  // ]),
   sticky: PropTypes.bool,
   relative: PropTypes.bool,
   center: PropTypes.bool,

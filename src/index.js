@@ -22,9 +22,9 @@ import App from "App";
 ReactDOM.render(
   <BrowserRouter>
     <Web3Provider
-      networkIds={[1001011]}
+      networkIds={[1313161555]}
       tokensToWatch={{
-        1001011: [
+        1313161555: [
           {
             address: process.env.REACT_APP_CONTRACT_ADDRESS,
             name: "HunterDAO ETHDenver Closeout Party",
@@ -33,6 +33,8 @@ ReactDOM.render(
         ],
       }}
       onboardConfig={{
+        networkId: 1313161555,
+        networkName: "Aurora Testnet",
         darkMode: true,
         hideBranding: true,
       }}

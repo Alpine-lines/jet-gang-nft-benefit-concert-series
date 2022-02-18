@@ -55,8 +55,8 @@ export default {
   },
 
   info: {
-    main: "#00ABCD",
-    focus: "#00ABCD",
+    main: "#1188F2",
+    focus: "#1188F2",
   },
 
   success: {
@@ -65,13 +65,13 @@ export default {
   },
 
   warning: {
-    main: "#FF7700",
-    focus: "#FF7700",
+    main: "#FFCD00",
+    focus: "#FFCD00",
   },
 
   error: {
-    main: "#FF4400",
-    focus: "#FF4400",
+    main: "#FF7700",
+    focus: "#FF7700",
   },
 
   light: {

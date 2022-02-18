@@ -40,18 +40,17 @@ export default {
     {
       name: "artists",
       items: [
-        { name: "Giani Blue", href: "https://www.creative-tim.com/presentation" },
-        { name: "BBBB BBB", href: "https://www.creative-tim.com/templates/free" },
-        { name: "CCC CCCC", href: "https://www.creative-tim.com/templates/premium" },
-        { name: "DD DDDDD", href: "https://www.creative-tim.com/blog" },
+        { name: "Giani Blue", href: "https://solo.to/gianniblu" },
+        { name: "DJ Howl", href: "https://www.instagram.com/howl_official_ig/?hl=en" },
+        { name: "Shoebox Moses", href: "https://www.shoeboxmoses.com/" },
       ],
     },
     {
       name: "venue",
       items: [
-        { name: "821 e 22nd St.", href: "https://iradesign.io/" },
-        { name: "Denver, CO", href: "https://www.creative-tim.com/bits" },
-        { name: "Name", href: "https://www.creative-tim.com/affiliates/new" },
+        { name: "Zodiac House", href: "http://zodiachause.com/" },
+        { name: "821 e 22nd St.", href: "http://zodiachause.com/" },
+        { name: "Denver, CO", href: "http://zodiachause.com/" },
       ],
     },
     {

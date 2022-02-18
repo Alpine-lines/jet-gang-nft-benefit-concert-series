@@ -18,14 +18,32 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 PRO React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
+// import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Images
-import image from "assets/images/jet-gang-cs-ethdenver-22.jpg";
+import image from "assets/images/ethdenver-benefit-1.jpeg";
+import { useEffect, useState } from "react";
+import { useWeb3 } from "@chainsafe/web3-context";
+import Web3 from "web3";
+import abi from "../../abi";
 
 function CtaOne() {
+  const [contract, setContract] = useState({});
+  const [web3, setWeb3] = useState({});
+  const { address, wallet, onboard, provider } = useWeb3();
+
+  // provider
+  useEffect(() => {
+    if (provider) {
+      const w3 = new Web3(provider.provider);
+      setWeb3(w3);
+      const ctr = new w3.eth.Contract(abi, process.env.REACT_APP_CONTRACT_ADDRESS);
+      setContract(ctr);
+    }
+  }, [provider]);
+
   return (
     <MKBox component="section" py={12}>
       <MKBox bgColor="grey-100" py={12} px={{ xs: 3, lg: 0 }}>
@@ -39,13 +57,32 @@ function CtaOne() {
               will be in your business.
             </MKTypography>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={5}>
-                <MKInput label="Email Here" color="dark" fullWidth />
-              </Grid>
               <Grid item xs={12} sm={4}>
-                <MKButton variant="gradient" color="warning" sx={{ height: "100%" }}>
-                  Subscribe
-                </MKButton>
+                {!wallet?.provider && (
+                  <MKButton
+                    variant="gradient"
+                    color="warning"
+                    onClick={() => {
+                      onboard.walletCheck();
+                    }}
+                  >
+                    Connect To RSVP
+                  </MKButton>
+                )}
+                {wallet?.provider && (
+                  <MKButton
+                    variant="gradient"
+                    color="warning"
+                    onClick={() => {
+                      contract.methods.buyTicket(0).send({
+                        value: web3.utils.toWei("0.0015"),
+                        from: address,
+                      });
+                    }}
+                  >
+                    Mint GA Tickets
+                  </MKButton>
+                )}
               </Grid>
             </Grid>
           </Grid>

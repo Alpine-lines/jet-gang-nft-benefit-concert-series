@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 import PropTypes from "prop-types";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 // @mui material components
 import Collapse from "@mui/material/Collapse";
@@ -46,7 +46,7 @@ function DefaultNavbarDropdown({
   };
 
   const routeComponent = {
-    component: Link,
+    component: HashLink,
     to: route,
   };
 

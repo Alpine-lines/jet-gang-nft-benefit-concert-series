@@ -36,7 +36,7 @@ function StatsThree() {
           sx={{ mx: "auto", textAlign: "center" }}
         >
           <MKTypography variant="h3" color="light" mb={5}>
-            Jet Gang Charity
+            Jet Gang Benefit Proceeds
           </MKTypography>
         </Grid>
         <Grid
