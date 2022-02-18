@@ -33,7 +33,8 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
-import bgImage from "assets/images/gold-stardoor.jpg";
+// import bgImage from "assets/images/gold-stardoor.jpg";
+import gold from "assets/images/gold-stage.jpg";
 
 // Content
 import CtaOne from "components/CtaOne";
@@ -70,14 +71,14 @@ function Presentation() {
           display: "grid",
           placeItems: "center",
           [breakpoints.up("lg")]: {
-            minHeight: "80vh",
-            backgroundImage: `linear-gradient(rgba(1, 0, 42, 0.55), rgba(1, 0, 42, 0.4)), url(${bgImage})`,
+            minHeight: "100vh",
+            backgroundImage: `linear-gradient(rgba(1, 0, 42, 0.55), rgba(1, 0, 42, 0.4)), url(${gold})`,
             backgroundSize: "cover",
-            backgroundPosition: "top",
+            backgroundPosition: "bottom",
           },
           [breakpoints.down("md")]: {
-            minHeight: "40vh",
-            backgroundImage: `linear-gradient(rgba(1, 0, 42, 0.55), rgba(1, 0, 42, 0.4))`,
+            minHeight: "65vh",
+            backgroundImage: `linear-gradient(rgba(1, 0, 42, 0.55), rgba(1, 0, 42, 0.4)), url(${gold})`,
             backgroundSize: "cover",
             backgroundPosition: "top",
           },
@@ -89,96 +90,29 @@ function Presentation() {
               container
               item
               sx={({ breakpoints }) => ({
+                alignContent: "center",
+                justifyContent: "center",
                 [breakpoints.up("lg")]: {
-                  direction: "column",
-                  alignContent: "center",
-                  justifyContent: "center",
+                  flexDirection: "column",
                 },
                 [breakpoints.down("md")]: {
-                  direction: "column-reverse",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  mt: "-5em",
-                  py: "5em",
+                  mt: "-4.5em",
                 },
               })}
             >
               <Grid
                 item
                 sx={({ breakpoints }) => ({
-                  mx: "auto",
                   [breakpoints.up("lg")]: {
-                    mt: "4em",
-                    mb: "-1.5em",
-                    display: "inline",
-                  },
-                  [breakpoints.down("md")]: {
-                    display: "none",
+                    mt: "-0.75em",
                   },
                 })}
               >
-                {!wallet?.provider && (
-                  <MKButton
-                    variant="gradient"
-                    color="warning"
-                    onClick={() => {
-                      onboard.walletSelect();
-                      onboard.walletCheck();
-                    }}
-                  >
-                    Select Wallet
-                  </MKButton>
-                )}
-                {wallet?.provider && !address && (
-                  <MKButton
-                    variant="gradient"
-                    color="warning"
-                    onClick={() => {
-                      onboard.walletCheck();
-                    }}
-                  >
-                    Connect To RSVP
-                  </MKButton>
-                )}
-                {wallet?.provider && address && (
-                  <MKButton
-                    variant="gradient"
-                    color="warning"
-                    onClick={() => {
-                      contract.methods.buyTicket(0).send({
-                        value: web3.utils.toWei("0.0015"),
-                        from: address,
-                      });
-                    }}
-                  >
-                    Mint GA Tickets
-                  </MKButton>
-                )}
-              </Grid>
-              <Grid item sx={{ mt: "5em", mx: "auto" }}>
-                <MKTypography
-                  variant="h1"
-                  color="white"
-                  mt={-6}
-                  mb={1}
-                  sx={({ breakpoints }) => ({
-                    [breakpoints.up("lg")]: {
-                      fontSize: "45pt",
-                    },
-                    [breakpoints.down("md")]: {
-                      fontSize: "28pt",
-                    },
-                  })}
-                >
-                  Jet Gang NFT Benefit{" "}
-                </MKTypography>
-              </Grid>
-              <Grid item sx={{ mx: "auto" }}>
                 <MKTypography
                   variant="subtitle1"
                   color="white"
-                  textAlign="center"
                   sx={({ breakpoints }) => ({
+                    textAlign: "center",
                     [breakpoints.up("lg")]: {
                       fontSize: "14pt",
                     },
@@ -192,21 +126,61 @@ function Presentation() {
                   &#186; Zodiac House | Sunday February 20th, 2022 | Denver, CO &#186;
                 </MKTypography>
               </Grid>
-
+              <Grid item>
+                <MKTypography
+                  variant="h1"
+                  color="white"
+                  my={1}
+                  sx={({ breakpoints }) => ({
+                    textAlign: "center",
+                    [breakpoints.up("lg")]: {
+                      fontSize: "45pt",
+                    },
+                    [breakpoints.down("md")]: {
+                      fontSize: "28pt",
+                    },
+                  })}
+                >
+                  Jet Gang NFT Benefit
+                </MKTypography>
+              </Grid>
               <Grid
                 item
                 sx={({ breakpoints }) => ({
-                  mx: "auto",
                   [breakpoints.up("lg")]: {
-                    mt: "4em",
-                    mb: "-1.5em",
-                    display: "none",
+                    mt: "-1em",
+                    mr: "-10em",
+                  },
+                  [breakpoints.down("md")]: {},
+                })}
+              >
+                <MKBox
+                  id="sponsor"
+                  sx={({ breakpoints }) => ({
+                    mt: "1em",
+                    [breakpoints.up("lg")]: {
+                      position: "relative",
+                      display: "inline",
+                    },
+                    [breakpoints.down("md")]: {
+                      display: "none",
+                    },
+                  })}
+                >
+                  <LogoAreaThree />
+                </MKBox>
+              </Grid>
+              <Grid
+                item
+                sx={({ breakpoints }) => ({
+                  textAlign: "center",
+                  [breakpoints.up("lg")]: {
+                    mt: "-2em",
+                    // mb: "5em",
                   },
                   [breakpoints.down("md")]: {
-                    mt: "2.5em",
-                    ml: "5.5em",
-                    textAlign: "center",
-                    display: "inline",
+                    my: "1em",
+                    mx: "auto",
                   },
                 })}
               >
@@ -247,22 +221,6 @@ function Presentation() {
                     Mint GA Tickets
                   </MKButton>
                 )}
-              </Grid>
-              <Grid item sx={{ mx: "auto" }}>
-                <MKBox
-                  id="sponsor"
-                  sx={({ breakpoints }) => ({
-                    margin: "0em -5em 7.5em 1em",
-                    [breakpoints.down("md")]: {
-                      display: "inline",
-                    },
-                    [breakpoints.down("md")]: {
-                      display: "none",
-                    },
-                  })}
-                >
-                  <LogoAreaThree />
-                </MKBox>
               </Grid>
             </Grid>
           </Grid>
@@ -277,12 +235,7 @@ function Presentation() {
         >
           <TeamTwo />
         </MKBox>
-        <MKBox
-          id="charity"
-          sx={{
-            margin: "0em 0",
-          }}
-        >
+        <MKBox id="charity">
           <StatsThree />
         </MKBox>
         <Grid item sx={{ mx: "auto" }}>
@@ -297,21 +250,43 @@ function Presentation() {
               },
             })}
           >
-            <MKTypography variant="h2" color="light" ml={14} mt={17.5} mb={5}>
+            <MKTypography
+              id="sponsors"
+              variant="h2"
+              color="light"
+              textAlign="center"
+              mt={12.5}
+              mb={1.5}
+            >
               Sponsors
             </MKTypography>
             <LogoAreaThree />
           </MKBox>
         </Grid>
         <MKBox
-          sx={{
-            margin: "5em 0",
-          }}
+          sx={({ breakpoints }) => ({
+            [breakpoints.up("lg")]: {
+              my: "5em",
+            },
+            [breakpoints.down("md")]: {
+              mt: "-1em",
+              mb: "4em",
+            },
+          })}
         >
           <CtaOne />
         </MKBox>
       </Container>
-      <MKBox pt={6} px={1} mt={6}>
+      <MKBox
+        sx={({ breakpoints }) => ({
+          [breakpoints.up("lg")]: {
+            mt: "3em",
+          },
+          [breakpoints.down("md")]: {
+            mt: "-5em",
+          },
+        })}
+      >
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

@@ -52,8 +52,9 @@ function CtaOne() {
       <MKBox
         bgColor="grey-100"
         py={12}
-        px={{ xs: 3, lg: 0 }}
+        px={{ xs: 2, lg: 0 }}
         sx={({ breakpoints }) => ({
+          textAlign: "center",
           borderRadius: "16px",
           [breakpoints.down("md")]: {
             mt: "2.5em",
@@ -68,9 +69,9 @@ function CtaOne() {
             xl={6}
             ml="auto"
             sx={({ breakpoints }) => ({
+              textAlign: "center",
               [breakpoints.down("md")]: {
                 mt: "12em",
-                textAlign: "center",
               },
             })}
           >
@@ -145,7 +146,7 @@ function CtaOne() {
                   mt: "-12em",
                 },
                 [breakpoints.down("md")]: {
-                  ml: "1em",
+                  mx: "auto",
                   mt: "-40em",
                 },
               })}

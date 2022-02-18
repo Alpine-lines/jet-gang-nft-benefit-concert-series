@@ -38,21 +38,24 @@ function DefaultFooter({ content }) {
       <Container>
         <Grid container spacing={3}>
           <Grid
+            container
             item
             xs={12}
             md={3}
             sx={{
-              mx: "auto",
-              mb: 3,
+              direction: "grid",
+              alignContent: "center",
+              justifyContent: "center",
+              textAlign: "center",
             }}
           >
             <MKBox
-              sx={{
-                display: "flex",
-                alignContent: "flex-start",
-                justifyContent: "flex-start",
-                flexDirection: "column",
-              }}
+            // sx={{
+            //   display: "flex",
+            // alignContent: "flex-start",
+            // justifyContent: "flex-start",
+            //   flexDirection: "column",
+            // }}
             >
               <Link to={brand.route}>
                 <MKBox
@@ -88,20 +91,33 @@ function DefaultFooter({ content }) {
             </MKBox>
           </Grid>
           {menus.map(({ name: title, items }) => (
-            <Grid key={title} item xs={6} md={2} sx={{ mb: 3 }}>
+            <Grid
+              key={title}
+              container
+              item
+              xs={6}
+              md={2}
+              sx={{
+                flexDirection: "column",
+                alignContent: "center",
+                justifyContent: "flex-start",
+                mx: "auto",
+                p: 1,
+              }}
+            >
               <MKTypography
                 display="block"
                 variant="button"
                 color="white"
                 fontWeight="bold"
                 textTransform="capitalize"
-                mb={1}
+                m={1}
               >
                 {title}
               </MKTypography>
-              <MKBox component="ul" p={0} m={0} sx={{ listStyle: "none" }}>
+              <MKBox component="ul" sx={{ listStyle: "none" }}>
                 {items.map(({ name, route, href }) => (
-                  <MKBox key={name} component="li" p={0} m={0} lineHeight={1.25}>
+                  <MKBox key={name} component="li" lineHeight={1.25}>
                     {href ? (
                       <MKTypography
                         component="a"
@@ -131,7 +147,7 @@ function DefaultFooter({ content }) {
               </MKBox>
             </Grid>
           ))}
-          <Grid item xs={12} sx={{ textAlign: "center", my: 3 }}>
+          <Grid item xs={12} sx={{ textAlign: "center" }}>
             {copyright}
           </Grid>
         </Grid>

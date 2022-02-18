@@ -40,34 +40,25 @@ function StatsThree() {
       const event = await ctr.methods.getEvent(0).call();
       setAvbl(event.seats - event.sold);
       setRaised(event.sold * w3.utils.fromWei(event.price) * 0.1);
-      console.log({ raised });
     }
   }, [provider]);
 
   return (
-    <MKBox component="section" mt={5} pt={5}>
+    <MKBox component="section" my={5} mx="auto" py={5} px={1.5}>
       <Container>
-        <Grid
-          container
-          item
-          direction="column"
-          xs={10}
-          lg={12}
-          spacing={5}
-          sx={{ mx: "auto", textAlign: "center" }}
-        >
-          <Grid item mx="auto">
-            <MKTypography variant="h3" color="info" mb={5}>
+        <Grid container item direction="column" xs={12} lg={12} spacing={3} textAlign="center">
+          <Grid item>
+            <MKTypography variant="h3" color="info">
               Jet Gang Benefit Proceeds
             </MKTypography>
           </Grid>
           <Grid
             container
             item
-            xs={8}
-            lg={10}
+            xs={12}
+            lg={12}
             sx={({ breakpoints }) => ({
-              display: "flex",
+              textAlign: "center",
               justifyContent: "center",
               [breakpoints.up("lg")]: {
                 flexDirection: "row",
@@ -77,17 +68,7 @@ function StatsThree() {
               },
             })}
           >
-            <Grid
-              item
-              xs={12}
-              md={4}
-              lg={4}
-              sx={({ breakpoints }) => ({
-                [breakpoints.down("md")]: {
-                  mt: "2.5em",
-                },
-              })}
-            >
+            <Grid item xs={12} md={6} lg={4}>
               <MKTypography variant="h3" color="warning">
                 {avbl}
               </MKTypography>
@@ -95,7 +76,7 @@ function StatsThree() {
                 Tickets Remaining
               </MKTypography>
             </Grid>
-            <Grid item xs={12} md={4} lg={3} direction="column" display="flex">
+            <Grid item xs={12} md={6} lg={3} direction="column" display="flex">
               <MKTypography variant="h3" color="warning">
                 10%
               </MKTypography>
@@ -103,7 +84,7 @@ function StatsThree() {
                 Donated
               </MKTypography>
             </Grid>
-            <Grid item xs={12} md={4} lg={3} direction="column" display="flex">
+            <Grid item xs={12} md={6} lg={3} direction="column" display="flex">
               <MKTypography variant="h3" color="warning">
                 {raised.toFixed(4)} ETH
               </MKTypography>
@@ -115,11 +96,10 @@ function StatsThree() {
           <Grid
             container
             item
-            direction="column"
             justifyContent="center"
-            xs={10}
-            lg={7}
+            xs={12}
             sx={({ breakpoints }) => ({
+              flexDirection: "column",
               [breakpoints.down("md")]: {
                 display: "none",
               },

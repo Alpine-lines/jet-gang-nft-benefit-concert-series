@@ -35,12 +35,17 @@ function LogoAreaThree() {
         <Grid
           container
           spacing={3}
+          xs={8}
+          md={10}
+          lg={12}
           sx={({ breakpoints }) => ({
             [breakpoints.up("lg")]: {
               flexDirection: "row",
             },
             [breakpoints.down("md")]: {
               flexDirection: "column",
+              alignItems: "center",
+              justifyItems: "center",
             },
           })}
         >
@@ -52,7 +57,7 @@ function LogoAreaThree() {
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
-                ml: "5em",
+                ml: "6.5em",
               },
             })}
           >
@@ -68,7 +73,7 @@ function LogoAreaThree() {
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
-                ml: "5em",
+                ml: "6.5em",
               },
             })}
           >
@@ -82,7 +87,7 @@ function LogoAreaThree() {
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
-                ml: "5em",
+                ml: "6.5em",
               },
             })}
           >
@@ -98,7 +103,7 @@ function LogoAreaThree() {
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
-                ml: "5em",
+                ml: "6.5em",
               },
             })}
           >
@@ -114,7 +119,7 @@ function LogoAreaThree() {
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
-                ml: "5em",
+                ml: "6.5em",
               },
             })}
           >
@@ -122,9 +127,6 @@ function LogoAreaThree() {
               <MKBox component="img" src={zodiac} alt="Zodiac Hause" width="100%" opacity={0.9} />
             </a>
           </Grid>
-          {/* <Grid item xs={6} md={4} lg={2} sx={{ my: "auto" }}> */}
-          {/* <MKBox component="img" src={vodafone} alt="vodafone" width="100%" opacity={0.9} /> */}
-          {/* </Grid> */}
         </Grid>
       </Container>
     </MKBox>
