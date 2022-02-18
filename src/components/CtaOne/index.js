@@ -13,6 +13,8 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useEffect, useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -24,7 +26,8 @@ import MKTypography from "components/MKTypography";
 
 // Images
 import image from "assets/images/ethdenver-benefit-1.jpeg";
-import { useEffect, useState } from "react";
+
+// Web3
 import { useWeb3 } from "@chainsafe/web3-context";
 import Web3 from "web3";
 import abi from "../../abi";
@@ -46,19 +49,58 @@ function CtaOne() {
 
   return (
     <MKBox component="section" py={12}>
-      <MKBox bgColor="grey-100" py={12} px={{ xs: 3, lg: 0 }}>
+      <MKBox
+        bgColor="grey-100"
+        py={12}
+        px={{ xs: 3, lg: 0 }}
+        sx={({ breakpoints }) => ({
+          borderRadius: "16px",
+          [breakpoints.down("md")]: {
+            mt: "2.5em",
+            flexDirection: "column-reverse",
+          },
+        })}
+      >
         <Grid container spacing={3}>
-          <Grid item xs={12} xl={6} ml="auto">
+          <Grid
+            item
+            xs={12}
+            xl={6}
+            ml="auto"
+            sx={({ breakpoints }) => ({
+              [breakpoints.down("md")]: {
+                mt: "12em",
+                textAlign: "center",
+              },
+            })}
+          >
             <MKTypography variant="h4" mb={1}>
-              Be the first to see the news
+              Celebrate ETHDenver. Make a Difference.
             </MKTypography>
             <MKTypography variant="body2" color="dark" mb={3}>
-              Your company may not be in the software business, but eventually, a software company
-              will be in your business.
+              <p>
+                Cheers to another great year @ ETHDenver. Come celebrate the tremendous growth of
+                one of the world&#39;s premier cryptocurrency events. 10% of All revenue will be
+                donated to NFTrees, helping to adress the world&#39;s climate crisis. The most
+                amazing thing about this community is how much we care about people and the world.
+                Let&#39;s get together and show our love!
+              </p>
             </MKTypography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={4}>
                 {!wallet?.provider && (
+                  <MKButton
+                    variant="gradient"
+                    color="warning"
+                    onClick={() => {
+                      onboard.walletSelect();
+                      onboard.walletCheck();
+                    }}
+                  >
+                    Select Wallet
+                  </MKButton>
+                )}
+                {wallet?.provider && !address && (
                   <MKButton
                     variant="gradient"
                     color="warning"
@@ -69,7 +111,7 @@ function CtaOne() {
                     Connect To RSVP
                   </MKButton>
                 )}
-                {wallet?.provider && (
+                {wallet?.provider && address && (
                   <MKButton
                     variant="gradient"
                     color="warning"
@@ -95,8 +137,18 @@ function CtaOne() {
               width="100%"
               borderRadius="lg"
               shadow="xl"
-              mt={-24}
-              display={{ xs: "none", lg: "block" }}
+              display={{ xs: "block" }}
+              sx={({ breakpoints }) => ({
+                borderRadius: "16px",
+                [breakpoints.up("md")]: {
+                  mr: "-4em",
+                  mt: "-12em",
+                },
+                [breakpoints.down("md")]: {
+                  ml: "1em",
+                  mt: "-40em",
+                },
+              })}
             />
           </Grid>
         </Grid>

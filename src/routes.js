@@ -37,21 +37,24 @@ Coded by www.creative-tim.com
 */
 
 // @mui material components
-// import Icon from "@mui/material/Icon";
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 
 const routes = [
   {
     name: "Lineup",
+    icon: <FlightTakeoffIcon />,
     route: "/#lineup",
     anchor: true,
   },
   {
     name: "Charity",
+    icon: <FlightTakeoffIcon />,
     route: "/#charity",
     anchor: true,
   },
   {
     name: "Sponsors",
+    icon: <FlightTakeoffIcon />,
     route: "/#sponsors",
     anchor: true,
   },

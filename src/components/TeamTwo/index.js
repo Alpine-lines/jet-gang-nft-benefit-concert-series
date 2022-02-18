@@ -37,7 +37,7 @@ function TeamTwo() {
       component="section"
       position="relative"
       py={12}
-      sx={{
+      sx={({ breakpoints }) => ({
         padding: "2em",
         backgroundImage: ({ palette: { gradients }, functions: { linearGradient, rgba } }) =>
           `${linearGradient(
@@ -45,40 +45,27 @@ function TeamTwo() {
             rgba(gradients.dark.state, 0.8)
           )}, url(${bgImage})`,
         backgroundPosition: "center",
-      }}
+        borderRadius: "16px",
+        [breakpoints.down("md")]: {
+          height: "150%",
+        },
+      })}
     >
       <Container>
-        {/* <Grid container justifyContent="center" alignContent="center">
-          <Grid item xs={12} md={8} alignContent="center" sx={{ mb: 6, mx: "auto" }}>
-            <MKBox
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              width="3rem"
-              height="3rem"
-              variant="gradient"
-              bgColor="info"
-              color="white"
-              shadow="md"
-              borderRadius="lg"
-              mb={2}
-            >
-              <Icon>supervisor_account</Icon>
-            </MKBox>
-            <MKTypography variant="h3" color="white">
-              Lineup
-            </MKTypography>
-            <MKTypography variant="body2" color="white" opacity={0.8}>
-              Lorem ipsum dolor sit amet...
-            </MKTypography>
-          </Grid>
-        </Grid> */}
         <Grid container sx={{ my: "3em", mx: "auto" }}>
           <MKTypography variant="h3" color="white">
             Lineup
           </MKTypography>
         </Grid>
-        <Grid container spacing={3}>
+        <Grid
+          container
+          spacing={3}
+          sx={({ breakpoints }) => ({
+            [breakpoints.down("md")]: {
+              direction: "column",
+            },
+          })}
+        >
           <Grid item xs={12} lg={6}>
             <a href="https://solo.to/gianniblu">
               <MKBox mb={1}>
@@ -98,7 +85,7 @@ function TeamTwo() {
                   image={howl}
                   name="DJ Howl"
                   position={{ color: "warning", label: "DJ" }}
-                  description="DJ/Producer | Dancer | Dreamer | Superfood + Live Water Entrepreneur"
+                  description="DJ/Producer | Dancer | Superfood + Live Water Entrepreneur"
                 />
               </MKBox>
             </a>

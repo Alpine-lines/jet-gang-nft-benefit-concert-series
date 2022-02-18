@@ -18,12 +18,13 @@ import { useState, useEffect } from "react";
 
 // react-router components
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
 
 // @mui material components
-import Container from "@mui/material/Container";
+import { Container, Grid, Box } from "@mui/material";
 
 // Material Kit 2 PRO React components
 import MKBox from "components/MKBox";
@@ -35,15 +36,15 @@ import DefaultNavbarDropdown from "components/Navbars/DefaultNavbar/DefaultNavba
 import DefaultNavbarMobile from "components/Navbars/DefaultNavbar/DefaultNavbarMobile";
 
 // Material Kit 2 PRO React base styles
-import breakpoints from "assets/theme/base/breakpoints";
+import _breakpoints from "assets/theme/base/breakpoints";
+
+// Images
+import gb from "assets/images/Gb Blue.png";
 
 // Web3-Context
 import { useWeb3 } from "@chainsafe/web3-context";
 import Web3 from "web3";
 import abi from "../../../abi";
-
-// Images
-// import gb from "assets/images/GB no background.png";
 
 // action;
 function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, center }) {
@@ -66,7 +67,7 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
-      if (window.innerWidth < breakpoints.values.lg) {
+      if (window.innerWidth < _breakpoints.values.lg) {
         setMobileView(true);
         setMobileNavbar(false);
       } else {
@@ -101,7 +102,16 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
   ));
 
   return (
-    <Container sx={sticky ? { position: "sticky", top: 0, zIndex: 10 } : null}>
+    <Container
+      sx={({ breakpoints }) => ({
+        position: sticky ? "sticky" : null,
+        top: sticky ? 0 : null,
+        zIndex: sticky ? 10 : null,
+        [breakpoints.down("md")]: {
+          height: "5px!imortant",
+        },
+      })}
+    >
       <MKBox
         py={1}
         px={{ xs: 4, sm: transparent ? 2 : 3, lg: transparent ? 0 : 2 }}
@@ -115,11 +125,21 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
         left={0}
         zIndex={3}
         sx={({ palette: { transparent: transparentColor, white }, functions: { rgba } }) => ({
+          height: "75px",
+          pt: "0.75em",
           backgroundColor: transparent ? transparentColor.main : rgba(white.main, 0.8),
           backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
         })}
       >
-        <MKBox display="flex" justifyContent="space-between" alignItems="center">
+        <MKBox
+          display="flex"
+          sx={({ breakpoints }) => ({
+            alignItems: "center",
+            [breakpoints.up("lg")]: {
+              justifyContent: "space-between",
+            },
+          })}
+        >
           <MKBox
             component={Link}
             to="/"
@@ -127,10 +147,53 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
             py={transparent ? 1.5 : 0.75}
             pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
           >
-            <MKTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
-              {/* <img src={gb} alt="Giani Blu" height="75px" />  */}
+            <MKTypography
+              variant="button"
+              fontWeight="bold"
+              color={light ? "white" : "dark"}
+              sx={({ breakpoints }) => ({
+                [breakpoints.up("lg")]: {
+                  display: "inline",
+                },
+                [breakpoints.down("md")]: {
+                  display: "none",
+                },
+              })}
+            >
               {brand}
             </MKTypography>
+            <Grid
+              item
+              sx={({ breakpoints }) => ({
+                [breakpoints.up("lg")]: {
+                  display: "none",
+                },
+                [breakpoints.down("md")]: {
+                  display: "inline",
+                },
+              })}
+            >
+              <HashLink
+                to="/"
+                sx={({ breakpoints }) => ({
+                  height: "100px",
+                  [breakpoints.down("md")]: {
+                    mb: "0",
+                  },
+                })}
+              >
+                <Box
+                  component="img"
+                  src={gb}
+                  alt="Giani Blu"
+                  sx={{
+                    mt: "-1.5em",
+                    ml: "-1em",
+                    height: "100px",
+                  }}
+                />
+              </HashLink>
+            </Grid>
           </MKBox>
           <MKBox
             color="inherit"
@@ -140,8 +203,28 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
           >
             {renderNavbarItems}
           </MKBox>
-          <MKBox ml={{ xs: "auto", lg: 0 }}>
+          <MKBox
+            ml={{ xs: "auto", lg: 0 }}
+            sx={({ breakpoints }) => ({
+              [breakpoints.down("md")]: {
+                mt: "-2em",
+                mr: "-0.5em",
+              },
+            })}
+          >
             {!wallet?.provider && (
+              <MKButton
+                variant="gradient"
+                color="warning"
+                onClick={() => {
+                  onboard.walletSelect();
+                  onboard.walletCheck();
+                }}
+              >
+                Select Wallet
+              </MKButton>
+            )}
+            {wallet?.provider && !address && (
               <MKButton
                 variant="gradient"
                 color="warning"
@@ -152,7 +235,7 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
                 Connect To RSVP
               </MKButton>
             )}
-            {wallet?.provider && (
+            {wallet?.provider && address && (
               <MKButton
                 variant="gradient"
                 color="warning"
