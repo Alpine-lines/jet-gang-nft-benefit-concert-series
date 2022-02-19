@@ -39,7 +39,7 @@ import gold from "assets/images/gold-stage.jpg";
 // Content
 import CtaOne from "components/CtaOne";
 import LogoAreaThree from "components/LogoAreaThree";
-import StatsThree from "components/StatsThree";
+import FeaturesOne from "components/FeaturesOne";
 import TeamTwo from "components/TeamTwo";
 
 // Web3
@@ -61,6 +61,19 @@ function Presentation() {
       setContract(ctr);
     }
   }, [provider]);
+
+  const buyTicket = async () => {
+    const gasEstimate = await contract.methods.buyTicket(0, false, 1).estimateGas({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+    });
+    const receipt = await contract.methods.buyTicket(0, false, 1).send({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
 
   return (
     <>
@@ -117,7 +130,7 @@ function Presentation() {
                       fontSize: "14pt",
                     },
                     [breakpoints.down("md")]: {
-                      fontSize: "14pt",
+                      fontSize: "12pt",
                     },
                   })}
                   px={6}
@@ -208,18 +221,26 @@ function Presentation() {
                   </MKButton>
                 )}
                 {wallet?.provider && address && (
-                  <MKButton
-                    variant="gradient"
-                    color="warning"
-                    onClick={() => {
-                      contract.methods.buyTicket(0).send({
-                        value: web3.utils.toWei("0.0015"),
-                        from: address,
-                      });
-                    }}
-                  >
-                    Mint GA Tickets
-                  </MKButton>
+                  <Grid container>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      onClick={() => {
+                        buyTicket();
+                      }}
+                    >
+                      Mint GA Tickets
+                    </MKButton>
+                    <MKButton
+                      variant="gradient"
+                      color="warning"
+                      onClick={() => {
+                        buyTicket();
+                      }}
+                    >
+                      Mint VIP Tickets
+                    </MKButton>
+                  </Grid>
                 )}
               </Grid>
             </Grid>
@@ -236,7 +257,7 @@ function Presentation() {
           <TeamTwo />
         </MKBox>
         <MKBox id="charity">
-          <StatsThree />
+          <FeaturesOne />
         </MKBox>
         <Grid item sx={{ mx: "auto" }}>
           <MKBox

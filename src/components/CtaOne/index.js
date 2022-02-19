@@ -25,7 +25,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Images
-import image from "assets/images/ethdenver-benefit-1.jpeg";
+import image from "assets/images/jg-nft-benefit-fly-ethdenver.jpeg";
 
 // Web3
 import { useWeb3 } from "@chainsafe/web3-context";
@@ -46,6 +46,19 @@ function CtaOne() {
       setContract(ctr);
     }
   }, [provider]);
+
+  const buyTicket = async () => {
+    const gasEstimate = contract.methods.buyTicket(0, false, 1).estimateGas({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+    });
+    const receipt = contract.methods.buyTicket(0, false, 1).send({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
 
   return (
     <MKBox component="section" py={12}>
@@ -88,7 +101,7 @@ function CtaOne() {
               </p>
             </MKTypography>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={4} mx="auto">
                 {!wallet?.provider && (
                   <MKButton
                     variant="gradient"
@@ -113,18 +126,26 @@ function CtaOne() {
                   </MKButton>
                 )}
                 {wallet?.provider && address && (
-                  <MKButton
-                    variant="gradient"
-                    color="warning"
-                    onClick={() => {
-                      contract.methods.buyTicket(0).send({
-                        value: web3.utils.toWei("0.0015"),
-                        from: address,
-                      });
-                    }}
-                  >
-                    Mint GA Tickets
-                  </MKButton>
+                  <Grid container>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      onClick={() => {
+                        buyTicket();
+                      }}
+                    >
+                      Mint GA Tickets
+                    </MKButton>
+                    <MKButton
+                      variant="gradient"
+                      color="warning"
+                      onClick={() => {
+                        buyTicket();
+                      }}
+                    >
+                      Mint VIP Tickets
+                    </MKButton>
+                  </Grid>
                 )}
               </Grid>
             </Grid>
@@ -143,7 +164,7 @@ function CtaOne() {
                 borderRadius: "16px",
                 [breakpoints.up("md")]: {
                   mr: "-4em",
-                  mt: "-12em",
+                  mt: "-8em",
                 },
                 [breakpoints.down("md")]: {
                   mx: "auto",

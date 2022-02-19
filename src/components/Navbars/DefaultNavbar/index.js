@@ -89,6 +89,20 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
 
+  const buyTicket = async () => {
+    const gasEstimate = await contract.methods.buyTicket(0, false, 1).estimateGas({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+    });
+    console.log({ eId: 0, vip: false, qty: 1, gasEstimate });
+    const receipt = await contract.methods.buyTicket(0, false, 1).send({
+      value: web3.utils.toWei("0.0015"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
+
   const renderNavbarItems = routes.map(({ name, icon, href, route, collapse }) => (
     <DefaultNavbarDropdown
       key={name}
@@ -173,15 +187,7 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
                 },
               })}
             >
-              <HashLink
-                to="/"
-                sx={({ breakpoints }) => ({
-                  height: "100px",
-                  [breakpoints.down("md")]: {
-                    mb: "0",
-                  },
-                })}
-              >
+              <HashLink to="/">
                 <Box
                   component="img"
                   src={gb}
@@ -218,7 +224,6 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
                 color="warning"
                 onClick={() => {
                   onboard.walletSelect();
-                  onboard.walletCheck();
                 }}
               >
                 Select Wallet
@@ -236,18 +241,26 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
               </MKButton>
             )}
             {wallet?.provider && address && (
-              <MKButton
-                variant="gradient"
-                color="warning"
-                onClick={() => {
-                  contract.methods.buyTicket(0).send({
-                    value: web3.utils.toWei("0.0015"),
-                    from: address,
-                  });
-                }}
-              >
-                Mint GA Tickets
-              </MKButton>
+              <Grid container>
+                <MKButton
+                  variant="gradient"
+                  color="info"
+                  onClick={() => {
+                    buyTicket();
+                  }}
+                >
+                  Mint GA Tickets
+                </MKButton>
+                <MKButton
+                  variant="gradient"
+                  color="warning"
+                  onClick={() => {
+                    buyTicket();
+                  }}
+                >
+                  Mint VIP Tickets
+                </MKButton>
+              </Grid>
             )}
           </MKBox>
         </MKBox>

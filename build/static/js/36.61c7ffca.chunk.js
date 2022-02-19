@@ -1,2 +1,0 @@
-(this["webpackJsonpjet-gang-benefit"]=this["webpackJsonpjet-gang-benefit"]||[]).push([[36],{1076:function(n,t){},1928:function(n,t){},1980:function(n,t){},2052:function(n,t){},2054:function(n,t){}}]);
-//# sourceMappingURL=36.61c7ffca.chunk.js.map

@@ -53,7 +53,7 @@ function DetailedFooter({ content }) {
                   variant="body2"
                   color="secondary"
                   mr={key === socials.length - 1 ? 0 : 3}
-                  sx={{ fontSize: "1.125rem" }}
+                  fontSize="1.125rem"
                 >
                   {icon}
                 </MKTypography>

@@ -27,6 +27,8 @@ import hd from "assets/images/hd-white.png";
 import humans from "assets/images/humans.png";
 import defy from "assets/images/defy.png";
 import zodiac from "assets/images/zh-logo-white.png";
+import trap from "assets/images/trap-baby-2.jpg";
+import hwolf from "assets/images/hemp-wolf.jpg";
 
 function LogoAreaThree() {
   return (
@@ -34,13 +36,16 @@ function LogoAreaThree() {
       <Container>
         <Grid
           container
+          item
           spacing={3}
           xs={8}
           md={10}
-          lg={12}
+          lg={10}
           sx={({ breakpoints }) => ({
             [breakpoints.up("lg")]: {
               flexDirection: "row",
+              justifyContent: "center",
+              alignContent: "center",
             },
             [breakpoints.down("md")]: {
               flexDirection: "column",
@@ -53,7 +58,7 @@ function LogoAreaThree() {
             item
             xs={6}
             md={4}
-            lg={2}
+            lg
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
@@ -62,14 +67,14 @@ function LogoAreaThree() {
             })}
           >
             <a href="https://jetapp.com/" target="_blank" rel="noreferrer">
-              <MKBox component="img" src={fly} alt="Fly App" width="100%" opacity={0.9} />
+              <MKBox component="img" src={fly} alt="Fly App" width="80%" opacity={0.9} />
             </a>
           </Grid>
           <Grid
             item
             xs={6}
             md={4}
-            lg={2}
+            lg
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
@@ -77,13 +82,13 @@ function LogoAreaThree() {
               },
             })}
           >
-            <MKBox component="img" src={hd} alt="HunterDAO" width="100%" opacity={0.9} />
+            <MKBox component="img" src={hd} alt="HunterDAO" width="80%" opacity={0.9} />
           </Grid>
           <Grid
             item
             xs={6}
             md={4}
-            lg={2}
+            lg
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
@@ -92,30 +97,14 @@ function LogoAreaThree() {
             })}
           >
             <a href="https://nftree.org/" target="_blank" rel="noreferrer">
-              <MKBox component="img" src={humans} alt="Humans I Trust" width="100%" opacity={0.9} />
+              <MKBox component="img" src={humans} alt="Humans I Trust" width="80%" opacity={0.9} />
             </a>
           </Grid>
           <Grid
             item
             xs={6}
             md={4}
-            lg={2}
-            sx={({ breakpoints }) => ({
-              my: "auto",
-              [breakpoints.down("md")]: {
-                ml: "6.5em",
-              },
-            })}
-          >
-            <a href="https://defydevelopmentcorp.com/" target="_blank" rel="noreferrer">
-              <MKBox component="img" src={defy} alt="DeFy Dev Corp" width="100%" opacity={0.9} />
-            </a>
-          </Grid>
-          <Grid
-            item
-            xs={6}
-            md={4}
-            lg={2}
+            lg
             sx={({ breakpoints }) => ({
               my: "auto",
               [breakpoints.down("md")]: {
@@ -124,7 +113,53 @@ function LogoAreaThree() {
             })}
           >
             <a href="https://zodiachause.com/" target="_blank" rel="noreferrer">
-              <MKBox component="img" src={zodiac} alt="Zodiac Hause" width="100%" opacity={0.9} />
+              <MKBox component="img" src={zodiac} alt="Zodiac Hause" width="80%" opacity={0.9} />
+            </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
+            <MKBox component="img" src={trap} alt="Trap Baby" width="80%" opacity={0.9} />
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
+            <a href="https://https://hempwolf.com/" target="_blank" rel="noreferrer">
+              <MKBox component="img" src={hwolf} alt="Hemp Wolf" width="80%" opacity={0.9} />
+            </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
+            <a href="https://defydevelopmentcorp.com/" target="_blank" rel="noreferrer">
+              <MKBox component="img" src={defy} alt="DeFy Dev Corp" width="80%" opacity={0.9} />
             </a>
           </Grid>
         </Grid>

@@ -38,25 +38,13 @@ export default function App() {
     document.scrollingElement.scrollTop = 0;
   }, [pathname]);
 
-  // const getRoutes = (allRoutes) =>
-  //   allRoutes.map((route) => {
-  //     if (route.collapse) {
-  //       return getRoutes(route.collapse);
-  //     }
-
-  //     if (route.route) {
-  //       return <Route exact path={route.route} element={route.component} key={route.key} />;
-  //     }
-
-  //     return null;
-  //   });
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
         {/* {getRoutes(routes)} */}
         <Route path="/" element={<Presentation />} />
+        {/* <Route path="/admin" element={<CreateEvent provider={provider} />} /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>
