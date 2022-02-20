@@ -52,12 +52,12 @@ const routes = [
     route: "/#charity",
     anchor: true,
   },
-  {
-    name: "Sponsors",
-    icon: <FlightTakeoffIcon />,
-    route: "/#sponsors",
-    anchor: true,
-  },
+  // {
+  //   name: "Sponsors",
+  //   icon: <FlightTakeoffIcon />,
+  //   route: "/#sponsors",
+  //   anchor: true,
+  // },
 ];
 
 export default routes;

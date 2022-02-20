@@ -29,10 +29,12 @@ import defy from "assets/images/defy.png";
 import zodiac from "assets/images/zh-logo-white.png";
 import trap from "assets/images/trap-baby-2.jpg";
 import hwolf from "assets/images/hemp-wolf.jpg";
+import zoo from "assets/images/zoo.png";
+import alpine from "assets/images/alpinLines-blue-circle.png";
 
 function LogoAreaThree() {
   return (
-    <MKBox pt={2} pb={6}>
+    <MKBox my={2} pt={2} pb={6}>
       <Container>
         <Grid
           container
@@ -128,6 +130,22 @@ function LogoAreaThree() {
               },
             })}
           >
+            <a href="https://zoolabs.com" tagert="_blank" rel="nonreferrer">
+              <MKBox component="img" src={zoo} alt="Zoo Labs" width="80%" opacity={0.9} />
+            </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
             <MKBox component="img" src={trap} alt="Trap Baby" width="80%" opacity={0.9} />
           </Grid>
           <Grid
@@ -142,7 +160,7 @@ function LogoAreaThree() {
               },
             })}
           >
-            <a href="https://https://hempwolf.com/" target="_blank" rel="noreferrer">
+            <a href="https://hempwolf.com/" target="_blank" rel="noreferrer">
               <MKBox component="img" src={hwolf} alt="Hemp Wolf" width="80%" opacity={0.9} />
             </a>
           </Grid>
@@ -160,6 +178,22 @@ function LogoAreaThree() {
           >
             <a href="https://defydevelopmentcorp.com/" target="_blank" rel="noreferrer">
               <MKBox component="img" src={defy} alt="DeFy Dev Corp" width="80%" opacity={0.9} />
+            </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
+            <a href="https://alpinelines.dev/" target="_blank" rel="noreferrer">
+              <MKBox component="img" src={alpine} alt="Alpine Lines" width="80%" opacity={0.9} />
             </a>
           </Grid>
         </Grid>

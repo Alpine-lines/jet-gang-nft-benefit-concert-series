@@ -121,29 +121,6 @@ const abi = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-      {
-        name: "_qty",
-        type: "uint256",
-      },
-    ],
-    name: "vipRemaining",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       {
@@ -169,37 +146,6 @@ const abi = [
     constant: true,
     inputs: [
       {
-        name: "_eventId",
-        type: "uint256",
-      },
-    ],
-    name: "getEventVIP",
-    outputs: [
-      {
-        name: "vipAvailable",
-        type: "bool",
-      },
-      {
-        name: "vipPrice",
-        type: "uint256",
-      },
-      {
-        name: "vipTicketSupply",
-        type: "uint256",
-      },
-      {
-        name: "vipSold",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
         name: "_owner",
         type: "address",
       },
@@ -209,47 +155,6 @@ const abi = [
       },
     ],
     name: "tokenOfOwnerByIndex",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_ticketId",
-        type: "uint256",
-      },
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-      {
-        name: "_vip",
-        type: "bool",
-      },
-    ],
-    name: "redeemTicket",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "getEventsCount",
     outputs: [
       {
         name: "",
@@ -281,15 +186,6 @@ const abi = [
   },
   {
     constant: false,
-    inputs: [],
-    name: "unpause",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
     inputs: [
       {
         name: "_from",
@@ -305,56 +201,6 @@ const abi = [
       },
     ],
     name: "safeTransferFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_name",
-        type: "string",
-      },
-      {
-        name: "_time",
-        type: "uint256",
-      },
-      {
-        name: "_token",
-        type: "bool",
-      },
-      {
-        name: "_limited",
-        type: "bool",
-      },
-      {
-        name: "_price",
-        type: "uint256",
-      },
-      {
-        name: "_seats",
-        type: "uint256",
-      },
-      {
-        name: "_vipAvailable",
-        type: "bool",
-      },
-      {
-        name: "_vipPrice",
-        type: "uint256",
-      },
-      {
-        name: "_vipTicketSupply",
-        type: "uint256",
-      },
-      {
-        name: "_ipfs",
-        type: "string",
-      },
-    ],
-    name: "createEvent",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
@@ -399,64 +245,6 @@ const abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-      {
-        name: "_vip",
-        type: "bool",
-      },
-      {
-        name: "_qty",
-        type: "uint256",
-      },
-    ],
-    name: "buyTicket",
-    outputs: [],
-    payable: true,
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_promoter",
-        type: "address",
-      },
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-      {
-        name: "_comps",
-        type: "uint256",
-      },
-    ],
-    name: "setEventPromoterComps",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "paused",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [
       {
@@ -468,76 +256,6 @@ const abi = [
     outputs: [
       {
         name: "",
-        type: "address",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-    ],
-    name: "eventsOf",
-    outputs: [
-      {
-        name: "",
-        type: "uint256[]",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-    ],
-    name: "getEvent",
-    outputs: [
-      {
-        name: "name",
-        type: "string",
-      },
-      {
-        name: "time",
-        type: "uint256",
-      },
-      {
-        name: "token",
-        type: "bool",
-      },
-      {
-        name: "limited",
-        type: "bool",
-      },
-      {
-        name: "price",
-        type: "uint256",
-      },
-      {
-        name: "seats",
-        type: "uint256",
-      },
-      {
-        name: "sold",
-        type: "uint256",
-      },
-      {
-        name: "ipfs",
-        type: "string",
-      },
-      {
-        name: "owner",
         type: "address",
       },
     ],
@@ -565,38 +283,6 @@ const abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_promoter",
-        type: "address",
-      },
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-    ],
-    name: "getEventPromoterComps",
-    outputs: [
-      {
-        name: "comps",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [
       {
@@ -616,34 +302,15 @@ const abi = [
       },
       {
         name: "",
+        type: "uint256",
+      },
+      {
+        name: "",
         type: "bool",
       },
       {
         name: "",
         type: "string",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: "pause",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "owner",
-    outputs: [
-      {
-        name: "",
-        type: "address",
       },
     ],
     payable: false,
@@ -735,25 +402,6 @@ const abi = [
     constant: true,
     inputs: [
       {
-        name: "_admin",
-        type: "address",
-      },
-    ],
-    name: "getAdminEvent",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
         name: "_tokenId",
         type: "uint256",
       },
@@ -767,32 +415,6 @@ const abi = [
     ],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_guest",
-        type: "address",
-      },
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-      {
-        name: "_vip",
-        type: "bool",
-      },
-      {
-        name: "_qty",
-        type: "uint256",
-      },
-    ],
-    name: "grantTicket",
-    outputs: [],
-    payable: true,
-    stateMutability: "payable",
     type: "function",
   },
   {
@@ -817,151 +439,6 @@ const abi = [
     payable: false,
     stateMutability: "view",
     type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_newOwner",
-        type: "address",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_admin",
-        type: "address",
-      },
-      {
-        name: "_eventId",
-        type: "uint256",
-      },
-    ],
-    name: "setEventAdmin",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "owner",
-        type: "address",
-      },
-      {
-        indexed: false,
-        name: "eventId",
-        type: "uint256",
-      },
-    ],
-    name: "CreatedEvent",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "buyer",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "eventId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        name: "ticketId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        name: "vip",
-        type: "bool",
-      },
-    ],
-    name: "SoldTicket",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "eventId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        name: "ticketId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        name: "vip",
-        type: "bool",
-      },
-    ],
-    name: "RedeemedTicket",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: "Pause",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: "Unpause",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "previousOwner",
-        type: "address",
-      },
-    ],
-    name: "OwnershipRenounced",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "previousOwner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "OwnershipTransferred",
-    type: "event",
   },
   {
     anonymous: false,

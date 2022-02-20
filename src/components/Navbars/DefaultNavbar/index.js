@@ -90,13 +90,25 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
   }, []);
 
   const buyTicket = async () => {
-    const gasEstimate = await contract.methods.buyTicket(0, false, 1).estimateGas({
-      value: web3.utils.toWei("0.0015"),
+    const gasEstimate = await contract.methods.buyTicket().estimateGas({
+      value: web3.utils.toWei("40"),
       from: address,
     });
-    console.log({ eId: 0, vip: false, qty: 1, gasEstimate });
-    const receipt = await contract.methods.buyTicket(0, false, 1).send({
-      value: web3.utils.toWei("0.0015"),
+    const receipt = await contract.methods.buyTicket().send({
+      value: web3.utils.toWei("40"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
+
+  const buyVipTicket = async () => {
+    const gasEstimate = await contract.methods.buyVIPTicket().estimateGas({
+      value: web3.utils.toWei("630"),
+      from: address,
+    });
+    const receipt = await contract.methods.buyVIPTicket().send({
+      value: web3.utils.toWei("630"),
       from: address,
       gas: gasEstimate,
     });
@@ -248,6 +260,9 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
                   onClick={() => {
                     buyTicket();
                   }}
+                  sx={{
+                    mx: "2em",
+                  }}
                 >
                   Mint GA Tickets
                 </MKButton>
@@ -255,7 +270,7 @@ function DefaultNavbar({ brand, routes, transparent, light, sticky, relative, ce
                   variant="gradient"
                   color="warning"
                   onClick={() => {
-                    buyTicket();
+                    buyVipTicket();
                   }}
                 >
                   Mint VIP Tickets

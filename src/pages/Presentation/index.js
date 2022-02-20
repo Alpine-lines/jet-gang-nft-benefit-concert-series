@@ -63,12 +63,25 @@ function Presentation() {
   }, [provider]);
 
   const buyTicket = async () => {
-    const gasEstimate = await contract.methods.buyTicket(0, false, 1).estimateGas({
-      value: web3.utils.toWei("0.0015"),
+    const gasEstimate = await contract.methods.buyTicket().estimateGas({
+      value: web3.utils.toWei("40"),
       from: address,
     });
-    const receipt = await contract.methods.buyTicket(0, false, 1).send({
-      value: web3.utils.toWei("0.0015"),
+    const receipt = await contract.methods.buyTicket().send({
+      value: web3.utils.toWei("40"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
+
+  const buyVipTicket = async () => {
+    const gasEstimate = await contract.methods.buyVIPTicket().estimateGas({
+      value: web3.utils.toWei("630"),
+      from: address,
+    });
+    const receipt = await contract.methods.buyVIPTicket().send({
+      value: web3.utils.toWei("630"),
       from: address,
       gas: gasEstimate,
     });
@@ -98,7 +111,7 @@ function Presentation() {
         })}
       >
         <Container>
-          <Grid container item xs={12} lg={9} pt={25} mx="auto">
+          <Grid container item xs={12} lg={9} mx="auto">
             <Grid
               container
               item
@@ -187,13 +200,12 @@ function Presentation() {
                 item
                 sx={({ breakpoints }) => ({
                   textAlign: "center",
+                  mx: "auto",
                   [breakpoints.up("lg")]: {
                     mt: "-2em",
-                    // mb: "5em",
                   },
                   [breakpoints.down("md")]: {
                     my: "1em",
-                    mx: "auto",
                   },
                 })}
               >
@@ -221,12 +233,15 @@ function Presentation() {
                   </MKButton>
                 )}
                 {wallet?.provider && address && (
-                  <Grid container>
+                  <Grid container mx="auto">
                     <MKButton
                       variant="gradient"
                       color="info"
                       onClick={() => {
                         buyTicket();
+                      }}
+                      sx={{
+                        mx: "2em",
                       }}
                     >
                       Mint GA Tickets
@@ -235,7 +250,7 @@ function Presentation() {
                       variant="gradient"
                       color="warning"
                       onClick={() => {
-                        buyTicket();
+                        buyVipTicket();
                       }}
                     >
                       Mint VIP Tickets

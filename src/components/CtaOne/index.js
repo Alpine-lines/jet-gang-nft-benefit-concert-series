@@ -48,12 +48,25 @@ function CtaOne() {
   }, [provider]);
 
   const buyTicket = async () => {
-    const gasEstimate = contract.methods.buyTicket(0, false, 1).estimateGas({
-      value: web3.utils.toWei("0.0015"),
+    const gasEstimate = await contract.methods.buyTicket().estimateGas({
+      value: web3.utils.toWei("40"),
       from: address,
     });
-    const receipt = contract.methods.buyTicket(0, false, 1).send({
-      value: web3.utils.toWei("0.0015"),
+    const receipt = await contract.methods.buyTicket().send({
+      value: web3.utils.toWei("40"),
+      from: address,
+      gas: gasEstimate,
+    });
+    return receipt;
+  };
+
+  const buyVipTicket = async () => {
+    const gasEstimate = await contract.methods.buyVIPTicket().estimateGas({
+      value: web3.utils.toWei("630"),
+      from: address,
+    });
+    const receipt = await contract.methods.buyVIPTicket().send({
+      value: web3.utils.toWei("630"),
       from: address,
       gas: gasEstimate,
     });
@@ -101,7 +114,7 @@ function CtaOne() {
               </p>
             </MKTypography>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={4} mx="auto">
+              <Grid item xs={12} sm={4} lg={12}>
                 {!wallet?.provider && (
                   <MKButton
                     variant="gradient"
@@ -126,12 +139,24 @@ function CtaOne() {
                   </MKButton>
                 )}
                 {wallet?.provider && address && (
-                  <Grid container>
+                  <Grid
+                    container
+                    lg
+                    direction="row"
+                    sx={({ breakpoints }) => ({
+                      [breakpoints.up("md")]: {
+                        ml: "6em",
+                      },
+                    })}
+                  >
                     <MKButton
                       variant="gradient"
                       color="info"
                       onClick={() => {
                         buyTicket();
+                      }}
+                      sx={{
+                        mx: "2em",
                       }}
                     >
                       Mint GA Tickets
@@ -140,7 +165,7 @@ function CtaOne() {
                       variant="gradient"
                       color="warning"
                       onClick={() => {
-                        buyTicket();
+                        buyVipTicket();
                       }}
                     >
                       Mint VIP Tickets

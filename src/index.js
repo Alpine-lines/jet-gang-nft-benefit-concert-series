@@ -22,19 +22,10 @@ import App from "App";
 ReactDOM.render(
   <BrowserRouter>
     <Web3Provider
-      networkIds={[1313161554]}
-      // tokensToWatch={{
-      //   1313161554: [
-      //     {
-      //       address: process.env.REACT_APP_CONTRACT_ADDRESS,
-      //       name: "HunterDAO ETHDenver Closeout Party",
-      //       symbol: "TIX",
-      //     },
-      //   ],
-      // }}
+      networkIds={[137]}
       onboardConfig={{
-        networkId: 1313161554,
-        networkName: "Aurora",
+        networkId: 137,
+        networkName: "Matic",
         darkMode: true,
         hideBranding: true,
       }}
