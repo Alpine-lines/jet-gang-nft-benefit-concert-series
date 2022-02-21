@@ -231,6 +231,8 @@ function Presentation() {
               textAlign: "center",
               mx: "auto",
               [breakpoints.up("lg")]: {
+                justifyContent: "center",
+                alignContent: "center",
                 mt: "-2em",
               },
               [breakpoints.down("md")]: {
@@ -321,6 +323,9 @@ function Presentation() {
         <MKBox
           id="charity"
           sx={({ breakpoints }) => ({
+            [breakpoints.up("lg")]: {
+              mt: "2em",
+            },
             [breakpoints.down("md")]: {
               mb: "5em",
             },

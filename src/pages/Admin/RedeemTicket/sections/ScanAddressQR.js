@@ -56,15 +56,18 @@ function ScanAddressQR() {
   const [listOfTickets, setListOfTickets] = useState([]);
   const [ticketsOfUser, setTicketsOfUser] = useState();
   const [userAddress, setUserAddress] = useState();
+  const [scanQr, setScanQr] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const { provider } = useWeb3();
 
   useEffect(() => {
-    if (provider) {
+    if (!typeof provider === "undefined") {
       const w3 = new Web3(provider.provider);
       setWeb3(w3);
       const ctr = new web3.eth.Contract(abi, process.env.REACT_APP_CONTRACT_ADDRESS);
       setcontract(ctr);
+      console.log({ provider, web3, ctr });
     }
   }, [provider]);
 
@@ -136,6 +139,7 @@ function ScanAddressQR() {
           });
           if (ticket.value[0] === state.props.event_id && ticket.value[2] === true) {
             contract.methods.redeemTicket.cacheSend(ticket.args[0], state.props.event_id);
+            setSuccess(true);
             console.log({
               tId: ticket.args[0],
               eId: state.props.event_id,
@@ -216,65 +220,55 @@ function ScanAddressQR() {
             />
           </Grid>
           <Grid item xs={12} md={5} sx={{ mr: "auto", ml: { xs: 0, md: 6 } }}>
-            <ListItem title="1. Listen to Social Conversations">
-              <QrReader
-                delay={300}
-                onResult={(result, error) => {
-                  if (error) {
-                    handleError();
-                  } else {
-                    checkQR();
-                  }
-                }}
-                onError={() => {}}
-                style={{ width: "100%" }}
-              />
-            </ListItem>
-            <ListItem title="2. Performance Analyze">
-              <Grid container direction="row">
-                <MKInput
-                  id="address"
-                  onSubmit={(e) => {
-                    setUserAddress(e.target.value);
-                    checkManual();
+            <ListItem title="1. Scan QR Code">
+              {!scanQr && (
+                <MKButton color="warning" onClick={() => setScanQr(true)}>
+                  Scan QR
+                </MKButton>
+              )}
+              {scanQr && provider && (
+                <QrReader
+                  delay={300}
+                  onResult={(result, error) => {
+                    if (error) {
+                      handleError();
+                    } else {
+                      checkQR();
+                    }
                   }}
+                  onError={() => {}}
+                  style={{ width: "100%" }}
                 />
+              )}
+            </ListItem>
+            <ListItem title="2. Enter Address">
+              <Grid container direction="row">
+                {provider && (
+                  <MKInput
+                    id="address"
+                    onSubmit={(e) => {
+                      setUserAddress(e.target.value);
+                      checkManual();
+                    }}
+                  />
+                )}
               </Grid>
             </ListItem>
-            <ListItem title="3. Social Conversions">
-              <MKButton color="warning" onClick={checkTickets}>
-                Redeem Ticket
-              </MKButton>
+            <ListItem title="3. Redeem Ticket">
+              {provider && (
+                <MKButton color="warning" onClick={checkTickets}>
+                  Redeem Ticket
+                </MKButton>
+              )}
+              {success && (
+                <MKTypography component="subtitle2">
+                  Success! Ticket has been successfully redeemed!
+                </MKTypography>
+              )}
             </ListItem>
           </Grid>
         </Grid>
         <Divider sx={{ my: { xs: 2, sm: 8 }, mx: 12 }} />
-        {/* <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} md={5} sx={{ ml: "auto" }}>
-            <ListItem title="1. Always In Sync">
-              No matter where you are, Trello stays in sync across all of your devices.
-            </ListItem>
-            <ListItem title="2. Work With Any Team">
-              Whether it&apos;s for work or even the next family vacation, Trello helps your team.
-            </ListItem>
-            <ListItem title="3. A Productivity Platform">
-              Integrate the apps your team already uses directly into your workflow.
-            </ListItem>
-          </Grid>
-          <Grid item xs={12} md={4} sx={{ mr: "auto", ml: { xs: 0, md: 6 } }}>
-            <DefaultBackgroundCard
-              image={bgImage2}
-              label="social activities"
-              title="Working on Wallstreet is Not So Easy"
-              description="There’s nothing I really wanted to do in life that I wasn’t able to get good at. I’m not really specifically talented at anything except for the ability to learn."
-              action={{
-                type: "internal",
-                route: "/pages/support/help-center",
-                label: "get started",
-              }}
-            />
-          </Grid>
-        </Grid> */}
       </Container>
     </MKBox>
   );
