@@ -25,7 +25,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Images
-import image from "assets/images/jg-nft-benefit-fly-ethdenver.jpeg";
+import image from "assets/images/JetGang.gif";
 
 // Web3
 import { useWeb3 } from "@chainsafe/web3-context";
@@ -74,10 +74,9 @@ function CtaOne() {
   };
 
   return (
-    <MKBox component="section" py={12}>
+    <MKBox component="section">
       <MKBox
         bgColor="grey-100"
-        py={12}
         px={{ xs: 2, lg: 0 }}
         sx={({ breakpoints }) => ({
           textAlign: "center",
@@ -88,21 +87,24 @@ function CtaOne() {
           },
         })}
       >
-        <Grid container spacing={3}>
+        <Grid container>
           <Grid
             item
             xs={12}
             xl={6}
-            ml="auto"
             sx={({ breakpoints }) => ({
               textAlign: "center",
+              [breakpoints.up("lg")]: {
+                mt: "2em",
+                ml: "5rem",
+              },
               [breakpoints.down("md")]: {
                 mt: "12em",
               },
             })}
           >
             <MKTypography variant="h4" mb={1}>
-              Celebrate ETHDenver. Make a Difference.
+              Jet Gang NFT Benefit
             </MKTypography>
             <MKTypography variant="body2" color="dark" mb={3}>
               <p>
@@ -113,7 +115,16 @@ function CtaOne() {
                 Let&#39;s get together and show our love!
               </p>
             </MKTypography>
-            <Grid container spacing={2}>
+            <Grid container direction="row" spacing={2}>
+              <Grid item xs={12} sm={4} lg={12}>
+                <MKButton
+                  variant="gradient"
+                  color="warning"
+                  href="https://www.eventbrite.com/e/zoo-eth-denver-animal-conservation-event-tickets-273674256067"
+                >
+                  Get Tickets On Event Bright
+                </MKButton>
+              </Grid>
               <Grid item xs={12} sm={4} lg={12}>
                 {!wallet?.provider && (
                   <MKButton
@@ -135,7 +146,7 @@ function CtaOne() {
                       onboard.walletCheck();
                     }}
                   >
-                    Connect To RSVP
+                    Pay With Crypto
                   </MKButton>
                 )}
                 {wallet?.provider && address && (
@@ -145,7 +156,7 @@ function CtaOne() {
                     direction="row"
                     sx={({ breakpoints }) => ({
                       [breakpoints.up("md")]: {
-                        ml: "6em",
+                        ml: "2.5em",
                       },
                     })}
                   >
@@ -180,20 +191,20 @@ function CtaOne() {
               component="img"
               src={image}
               alt="image"
-              maxWidth="18.75rem"
-              width="100%"
+              height="22.5em"
               borderRadius="lg"
               shadow="xl"
               display={{ xs: "block" }}
               sx={({ breakpoints }) => ({
                 borderRadius: "16px",
+
                 [breakpoints.up("md")]: {
+                  ml: "2em",
                   mr: "-4em",
-                  mt: "-8em",
                 },
                 [breakpoints.down("md")]: {
                   mx: "auto",
-                  mt: "-40em",
+                  mt: "0em",
                 },
               })}
             />

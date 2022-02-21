@@ -21,7 +21,7 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 PRO React components
 import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
+// import MKTypography from "components/MKTypography";
 
 // Web3-Context
 import { useWeb3 } from "@chainsafe/web3-context";
@@ -29,17 +29,19 @@ import Web3 from "web3";
 import abi from "../../abi";
 
 function StatsThree() {
-  const [avbl, setAvbl] = useState(400);
-  const [raised, setRaised] = useState(0);
+  // const [avbl, setAvbl] = useState(400);
+  // eslint-disable-next-line no-unused-vars
+  const [contract, setContract] = useState(0);
   const { provider } = useWeb3();
 
   useEffect(async () => {
     if (provider) {
       const w3 = new Web3(provider.provider);
       const ctr = new w3.eth.Contract(abi, process.env.REACT_APP_CONTRACT_ADDRESS);
-      const event = await ctr.methods.getEvent(0).call();
-      setAvbl(event.seats - event.sold);
-      setRaised(event.sold * w3.utils.fromWei(event.price) * 0.1).toFixed(4);
+      setContract(ctr);
+      // const event = await ctr.methods.getEvent(0).call();
+      // setAvbl(event.seats - event.sold);
+      // setRaised(event.sold * w3.utils.fromWei(event.price) * 0.1).toFixed(4);
     }
   }, [provider]);
 
@@ -68,7 +70,7 @@ function StatsThree() {
               Jet Gang Benefit Proceeds
             </MKTypography>
           </Grid> */}
-          <Grid
+          {/* <Grid
             container
             item
             spacing={1}
@@ -111,7 +113,7 @@ function StatsThree() {
                 </MKTypography>
               </Grid>
             )}
-          </Grid>
+          </Grid> */}
           {/* <Grid
             container
             item

@@ -29,10 +29,21 @@ import StatsThree from "components/StatsThree";
 
 function FeaturesOne() {
   return (
-    <MKBox component="section" py={{ xs: 3, md: 12 }}>
+    <MKBox component="section">
+      {/* /py={{ xs: 3, md: 6 }} */}
       <Container>
-        <Grid container alignItems="center">
-          <Grid item xs={12} lg={5}>
+        <Grid container spacing={1} alignItems="center">
+          <Grid
+            item
+            xs={12}
+            lg={5}
+            sx={({ breakpoints }) => ({
+              [breakpoints.down("md")]: {
+                mt: "-2.5em",
+                mb: "-15em",
+              },
+            })}
+          >
             <MKTypography textAlign="start" variant="h3" my={1}>
               Why?
             </MKTypography>
@@ -66,33 +77,8 @@ function FeaturesOne() {
             >
               <StatsThree />
             </MKTypography>
-            {/* <MKTypography
-              component="a"
-              href="#"
-              variant="body2"
-              color="info"
-              fontWeight="regular"
-              sx={{
-                width: "max-content",
-                display: "flex",
-                alignItems: "center",
-
-                "& .material-icons-round": {
-                  fontSize: "1.125rem",
-                  transform: "translateX(3px)",
-                  transition: "transform 0.2s cubic-bezier(0.34, 1.61, 0.7, 1.3)",
-                },
-
-                "&:hover .material-icons-round, &:focus .material-icons-round": {
-                  transform: "translateX(6px)",
-                },
-              }}
-            >
-              More about us
-              <AttachMoneyIcon sx={{ fontWeight: "bold" }} />
-            </MKTypography> */}
           </Grid>
-          <Grid item xs={12} lg={6} sx={{ ml: { xs: -2, lg: "auto" }, mt: { xs: 6, lg: 0 } }}>
+          <Grid item xs={12} lg={6} sx={{ ml: { md: -2, lg: "auto" }, mt: { md: "-5em", lg: 0 } }}>
             <Stack>
               <AboutUsOption
                 icon="attach_money"

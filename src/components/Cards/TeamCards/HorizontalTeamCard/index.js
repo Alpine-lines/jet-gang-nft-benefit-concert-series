@@ -79,7 +79,7 @@ function HorizontalTeamCard({ image, name, position, description }) {
               color="dark"
               sx={({ breakpoints }) => ({
                 [breakpoints.down("md")]: {
-                  fontSize: "11pt",
+                  fontSize: "10pt",
                 },
               })}
             >

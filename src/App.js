@@ -25,9 +25,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 // Material Kit 2 PRO React themes
 import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
-
-// Material Kit 2 PRO React routes
-// import routes from "routes";
+import RedeemTicketPage from "layouts/pages/redeemTicket";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -42,9 +40,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
-        {/* {getRoutes(routes)} */}
         <Route path="/" element={<Presentation />} />
-        {/* <Route path="/admin" element={<CreateEvent provider={provider} />} /> */}
+        <Route path="/redeem-ticket" element={<RedeemTicketPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>

@@ -52,12 +52,12 @@ const routes = [
     route: "/#charity",
     anchor: true,
   },
-  // {
-  //   name: "Sponsors",
-  //   icon: <FlightTakeoffIcon />,
-  //   route: "/#sponsors",
-  //   anchor: true,
-  // },
+  {
+    name: "Event Bright",
+    icon: <FlightTakeoffIcon />,
+    href: "https://www.eventbrite.com/e/zoo-eth-denver-animal-conservation-event-tickets-273674256067",
+    anchor: false,
+  },
 ];
 
 export default routes;

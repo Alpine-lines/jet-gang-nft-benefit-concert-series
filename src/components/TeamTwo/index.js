@@ -71,7 +71,7 @@ function TeamTwo() {
               <MKBox mb={1}>
                 <HorizontalTeamCard
                   image={giani}
-                  name="Giani Blu"
+                  name="Gianni Blu"
                   position={{ color: "warning", label: "DJ" }}
                   description="International DJ | Producer | Entertainer | Crypto Enthusiast"
                 />

@@ -29,8 +29,10 @@ import defy from "assets/images/defy.png";
 import zodiac from "assets/images/zh-logo-white.png";
 import trap from "assets/images/trap-baby-2.jpg";
 import hwolf from "assets/images/hemp-wolf.jpg";
+import equa from "assets/images/equa.svg";
 import zoo from "assets/images/zoo.png";
 import alpine from "assets/images/alpinLines-blue-circle.png";
+import sugarloaf from "assets/images/sugarloaf.jpg";
 
 function LogoAreaThree() {
   return (
@@ -41,7 +43,7 @@ function LogoAreaThree() {
           item
           spacing={3}
           xs={8}
-          md={10}
+          md={5}
           lg={10}
           sx={({ breakpoints }) => ({
             [breakpoints.up("lg")]: {
@@ -192,9 +194,45 @@ function LogoAreaThree() {
               },
             })}
           >
+            <a href="https://equa.global/" target="_blank" rel="noreferrer">
+              <MKBox component="img" src={equa} alt="Equa Global" width="80%" opacity={0.9} />
+            </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
             <a href="https://alpinelines.dev/" target="_blank" rel="noreferrer">
               <MKBox component="img" src={alpine} alt="Alpine Lines" width="80%" opacity={0.9} />
             </a>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={4}
+            lg
+            sx={({ breakpoints }) => ({
+              my: "auto",
+              [breakpoints.down("md")]: {
+                ml: "6.5em",
+              },
+            })}
+          >
+            <MKBox
+              component="img"
+              src={sugarloaf}
+              alt="Sugarloaf Valley Farms"
+              width="80%"
+              opacity={0.9}
+            />
           </Grid>
         </Grid>
       </Container>
